@@ -58,16 +58,17 @@ public class main_screen extends Activity {
         TextView letter_guessed = (TextView) findViewById(R.id.new_letter);
 
         String new_guess = letter_guessed.getText().toString();
-        current_game.try_to_insert_letter(new_guess);
+        if (!new_guess.equals("")) {
+            current_game.try_to_insert_letter(new_guess);
 
-        wordView.setText(current_game.get_display_word());
-        scoreText.setText(Integer.toString(current_game.get_score()));
-        letter_guessed.setText("");
+            wordView.setText(current_game.get_display_word());
+            scoreText.setText(Integer.toString(current_game.get_score()));
+            letter_guessed.setText("");
 
-        if (current_game.word_completed())
-        {
-            Toast.makeText(getApplicationContext(), "Congrats!!!! \n You guessed " + current_game.get_raw_word().toUpperCase() + " correctly" , Toast.LENGTH_LONG).show();
-            reset(view);
+            if (current_game.word_completed()) {
+                Toast.makeText(getApplicationContext(), "Congrats!!!! \n You guessed " + current_game.get_raw_word().toUpperCase() + " correctly", Toast.LENGTH_LONG).show();
+                reset(view);
+            }
         }
     }
 
