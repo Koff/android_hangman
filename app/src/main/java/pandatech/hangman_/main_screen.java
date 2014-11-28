@@ -62,10 +62,11 @@ public class main_screen extends Activity {
 
         wordView.setText(current_game.get_display_word());
         scoreText.setText(Integer.toString(current_game.get_score()));
+        letter_guessed.setText("");
 
         if (current_game.word_completed())
         {
-            Toast.makeText(getApplicationContext(), "Congrats!!!!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Congrats!!!! \n You guessed " + current_game.get_raw_word().toUpperCase() + " correctly" , Toast.LENGTH_LONG).show();
             reset(view);
         }
     }
