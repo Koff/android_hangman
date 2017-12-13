@@ -31,6 +31,10 @@ public class CurrentGameStatus {
             score.update_score_correct_letter();
             return true;
         } else {
+            if(wordToGuess.letter_already_in_word(guessed_letter)){
+                //Guessed the same thing
+                return true;
+            }
             score.update_score_incorrect_letter();
             return false;
         }
